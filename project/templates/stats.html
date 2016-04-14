@@ -9,7 +9,7 @@
 
 {% block content %}
     <div id="stats" class="row">
-		<h1>&nbsp;&nbsp;Compare your results to past results</h1>
+		<h1>&nbsp;&nbsp;Here's what you found!</h1>
 		<div class="col-sm-3">
 			<h3>Categories</h3>
 			<p>Teeth Found</p>
@@ -36,8 +36,11 @@
 	<br/>
     <div class="row">
     	<div class="col-sm-12">
-            <canvas id="myChart" width="800" height="400" auto-legend></canvas>
+						<h4>Teeth by Measurement Size (Counts)</h4>
+            <canvas id="myChart" width="350" height="300" auto-legend></canvas>
             <div id="legendDiv" class="chart-legend"></div>
+						<h4>Teeth by Measurement Size (Percentages)</h4>
+            <canvas id="pChart" width="350" height="300" auto-legend></canvas>
     	</div>
     </div>
 {% endblock %}

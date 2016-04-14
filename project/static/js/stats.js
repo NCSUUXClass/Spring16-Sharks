@@ -26,7 +26,8 @@ $(document).ready(function() {
 	}
 	document.getElementById('max').innerHTML = max + ' millimeters';
 	document.getElementById('min').innerHTML = min + ' millimeters';
-    document.getElementById('difftypes').innerHTML = totaldiff;
+  document.getElementById('difftypes').innerHTML = totaldiff;
+
 	var ctx = document.getElementById("myChart").getContext("2d");
 	var data = {
 		labels: ["1 mm", "2 mm", "3 mm", "4 mm", "5 mm", "6 mm", "7 mm", "8 mm", "9 mm", "10 mm", "11 mm", "12 mm", "13 mm", "14 mm", "15 mm"],
@@ -39,7 +40,7 @@ $(document).ready(function() {
 			pointStrokeColor: "#fff",
 			pointHighlightFill: "#fff",
 			pointHighlightStroke: "rgba(220,220,220,1)",
-			data: [0,0,5/110*15,5/110*15,15/110*15,22/110*15,18/110*15,8/110*15,5/110*15,10/110*15,4/110*15,5/110*15,1/110*15,1/110*15,0]
+			data: [0,2,10,11,38,47,38,18,11,23,7,10,2,2,1]
 		},
 		{
 			label: "User's Distribution",
@@ -67,6 +68,38 @@ $(document).ready(function() {
 		datasetFill: true
 	};
 	var myLineChart = new Chart(ctx).Bar(data, options);
+
+	//percantages chart
+	var pctx = document.getElementById("pChart").getContext("2d");
+	var pdata = {
+		labels: ["1 mm", "2 mm", "3 mm", "4 mm", "5 mm", "6 mm", "7 mm", "8 mm", "9 mm", "10 mm", "11 mm", "12 mm", "13 mm", "14 mm", "15 mm"],
+		datasets: [
+		{
+			label: "Overall Distribution",
+			fillColor: "rgba(220,220,200,0.2)",
+			strokeColor: "rgba(220,220,220,1)",
+			pointColor: "rgba(220,220,2220,1)",
+			pointStrokeColor: "#fff",
+			pointHighlightFill: "#fff",
+			pointHighlightStroke: "rgba(220,220,220,1)",
+			data: [0,1,5,5,17,21,17,8,5,10,3,5,1,1,.4]
+		},
+		{
+			label: "User's Distribution",
+			fillColor: "rgba(151,187,205,0.2)",
+			strokeColor: "rgba(151,187,205,1)",
+			pointColor: "rgba(151,187,205,1)",
+			pointStrokeColor: "#fff",
+			pointHighlightFill: "#fff",
+			pointHighlightStroke: "rgba(151,187,205,1)",
+			data: [(teethNum[0]/15)*100,(teethNum[1]/15)*100,(teethNum[2]/15)*100,(teethNum[3]/15)*100,(teethNum[4]/15)*100,(teethNum[5]/15)*100,(teethNum[6]/15)*100,(teethNum[7]/15)*100,(teethNum[8]/15)*100,(teethNum[9]/15)*100,(teethNum[10]/15)*100,(teethNum[11]/15)*100,(teethNum[12]/15)*100,(teethNum[13]/15)*100,(teethNum[14]/15)*100]
+		}
+		]
+	};
+	var legendTemplateElements = "";
+	for (var i=0; i < data.datasets.length; i++)
+		legendTemplateElements += '<li><span style="background-color:'+data.datasets[i].strokeColor+'">&nbsp;&nbsp;</span>'+ (typeof data.datasets[i].label !== 'undefined') ? data.datasets[i].label : '' + '</li>';
+	var myPChart = new Chart(pctx).Bar(pdata, options);
 	document.getElementById('legendDiv').innerHTML = myLineChart.generateLegend();
 });
 

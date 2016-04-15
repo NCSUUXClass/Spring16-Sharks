@@ -254,6 +254,7 @@ canvas {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    margin-top: 10%;
 }
 
 .chart-legend li span{
@@ -302,4 +303,20 @@ footer {
 	border: 2px #59595c solid;
 	height: 7%;
 	line-height: 20%;
+}
+
+#legendDiv {
+	margin: 20%;
+}
+
+#stats {
+	margin-right: auto;
+	margin-left: auto;
+	width: 50%;
+
+}
+
+.table, .table-hover {
+	margin-top: 10%;
+
 }

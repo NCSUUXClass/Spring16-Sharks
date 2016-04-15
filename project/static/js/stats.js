@@ -26,7 +26,7 @@ $(document).ready(function() {
 	}
 	document.getElementById('max').innerHTML = max + ' millimeters';
 	document.getElementById('min').innerHTML = min + ' millimeters';
-  document.getElementById('difftypes').innerHTML = totaldiff;
+  //document.getElementById('difftypes').innerHTML = totaldiff;
 
 	var ctx = document.getElementById("myChart").getContext("2d");
 	var data = {
@@ -101,6 +101,36 @@ $(document).ready(function() {
 		legendTemplateElements += '<li><span style="background-color:'+data.datasets[i].strokeColor+'">&nbsp;&nbsp;</span>'+ (typeof data.datasets[i].label !== 'undefined') ? data.datasets[i].label : '' + '</li>';
 	var myPChart = new Chart(pctx).Bar(pdata, options);
 	document.getElementById('legendDiv').innerHTML = myLineChart.generateLegend();
+	var newCtx = document.getElementById('newChart').getContext('2d');
+	
+	var newData = [
+		{
+			value: 7,
+			color: '#00008B',//darkblue,
+			highlight: '#0000FF',//blue,
+			label: 'Soupfin Shark'
+		},
+		{
+			value: 4,
+			color: '#006400',//darkgreen,
+			highlight: '#008000',//green,
+			label: 'Lemon Shark'
+		},
+		{
+			value: 3,
+			color: '#FFD700',//gold,
+			highlight: '#FFFF00',//yellow,
+			label: 'Unidentified'
+		},
+		{
+			value: 1,
+			color: '#DC143C',//crimson,
+			highlight: '#FF0000',//red,
+			label: 'Isurus Hastalis'
+		}
+	];
+	var myVeryNewChart = new Chart(newCtx).Pie(newData);
+
 });
 
 //function found at http://www.w3schools.com/js/js_cookies.asp
